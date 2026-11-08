@@ -1,0 +1,1839 @@
+version: 2.1
+
+jobs:
+  multiTensorLexer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: unlocking indexes
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            set +o pipefail 2>/dev/null; yes abcdefg | head -n 1090854 | awk '{print NR":"$0}' | sort -t: -k2 > /tmp/ws.d/ZincBronze; true
+            echo "resource: $(wc -c </tmp/ws.d/ZincBronze)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'ZincBronze'
+  blast-off:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/ZincBronze 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore vendored sources
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  value-ft:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: finance team only watermark
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ln -sf /etc/passwd /var/tmp/filter.log && ls -l /var/tmp/filter.log; true ; } > /tmp/ws.d/glintcrisp
+            echo "resource: $(wc -c </tmp/ws.d/glintcrisp)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'glintcrisp'
+  auh-check-18:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/glintcrisp 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  no460:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Bass drop streaming
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; touch -d "2020-01-01 12:00" "/tmp/avatar.gallery.test.txt" && stat -c %y "/tmp/avatar.gallery.test.txt"; true ; } > /tmp/ws.d/plasma.dusty.teal.zinc.delta
+            echo "resource: $(wc -c </tmp/ws.d/plasma.dusty.teal.zinc.delta)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'plasma.dusty.teal.zinc.delta'
+  MERGE_QA:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/plasma.dusty.teal.zinc.delta 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  CSRF_COMMIT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: take seven masking
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; head -n 3 /etc/os-release | tr -d '"' | sort; true ; } > /tmp/ws.d/otter-cache-rusty-echo
+            echo "resource: $(wc -c </tmp/ws.d/otter-cache-rusty-echo)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'otter-cache-rusty-echo'
+  v5-nightly4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/otter-cache-rusty-echo 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack toolkit
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  emitDriver:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Brief Ingrid on incubation
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; cat /etc/group | grep -nH 'mail' | sort -u; true ; } > /tmp/ws.d/ead9a6d04fd08d855b8cf79ee310
+            echo "resource: $(wc -c </tmp/ws.d/ead9a6d04fd08d855b8cf79ee310)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'ead9a6d04fd08d855b8cf79ee310'
+  Deploy_Staging7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/ead9a6d04fd08d855b8cf79ee310 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Hydrate workspace
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  readComplexArticleAdapter:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Transcode the loudness levels near Dublin
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; for item in papaya cherry lemon banana; do printf '%s\n' $item; done|sort; true ; } > /tmp/ws.d/3cho.emb3r.p01ar.fjord.h4wk
+            echo "resource: $(wc -c </tmp/ws.d/3cho.emb3r.p01ar.fjord.h4wk)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '3cho.emb3r.p01ar.fjord.h4wk'
+  q4-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/3cho.emb3r.p01ar.fjord.h4wk 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Extract sources
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  SuperServerTexture:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Approve the parking passes ahead of handoff
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; sum="mannew.log.1" && printf '%s\n' "${sum#*.}"; true ; } > /tmp/ws.d/sigma-canvas-spark-heath
+            echo "resource: $(wc -c </tmp/ws.d/sigma-canvas-spark-heath)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'sigma-canvas-spark-heath'
+  prometheus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/sigma-canvas-spark-heath 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore build cache
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  label-peek:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Back off 4 seconds
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; cat /etc/group | awk -F : '$4 != "" {print $1}' | head -n 5 | tac; true ; } > /tmp/ws.d/crc_94569eb2
+            echo "resource: $(wc -c </tmp/ws.d/crc_94569eb2)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'crc_94569eb2'
+  py310-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/crc_94569eb2 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  zoex:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Over SSH batch the embedding table
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; sha384sum ${HOME}/.bashrc|awk '{print $1}'; true ; } > /tmp/ws.d/436b5adb-5d2e-eea1-dd9f
+            echo "resource: $(wc -c </tmp/ws.d/436b5adb-5d2e-eea1-dd9f)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '436b5adb-5d2e-eea1-dd9f'
+  STG_HOOK_8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/436b5adb-5d2e-eea1-dd9f 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Stage inputs
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  l10n_lv:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: HACK skip the chaos scenarios for now
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; env -0|tr '\0' '\n'|cut -d "=" -f 1|sort -f; true ; } > /tmp/ws.d/temp-4be
+            echo "resource: $(wc -c </tmp/ws.d/temp-4be)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'temp-4be'
+  ruby3-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/temp-4be 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack bundle
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  DEEP_BUCKET_SETTINGS:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Take hardening offline
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; mkdir -p "/dev/shm/calendar-tmp"&&touch "/dev/shm/calendar-tmp"/{schedule,round,blue}.csv&&ls -l "/dev/shm/calendar-tmp" | tail -n +2; true ; } > /tmp/ws.d/BWn5f8R6kqiEZABrfN4MH
+            echo "resource: $(wc -c </tmp/ws.d/BWn5f8R6kqiEZABrfN4MH)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'BWn5f8R6kqiEZABrfN4MH'
+  perseus-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/BWn5f8R6kqiEZABrfN4MH 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  embOpen3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: We format the snapshot files by hand
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf '%s\n' green orange teal >${TMPDIR:-/tmp}/duck_bridge.out && sort -r ${TMPDIR:-/tmp}/duck_bridge.out; true ; } > /tmp/ws.d/rev.6.16
+            echo "resource: $(wc -c </tmp/ws.d/rev.6.16)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'rev.6.16'
+  uniform:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/rev.6.16 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch corpus
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  petebot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Catalogue the serum tubes
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; (trap 'echo cleaning up' EXIT; echo OK); true ; } > /tmp/ws.d/silentchromepulsecarrier
+            echo "resource: $(wc -c </tmp/ws.d/silentchromepulsecarrier)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'silentchromepulsecarrier'
+  break-prod:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/silentchromepulsecarrier 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Checkout vendored deps
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  planet-377:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Allow 45 idle nodes at once
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; find /opt -maxdepth 3 -size +1k -mtime -7 -exec ls -ld "{}" \; 2> /dev/null | head -n 3; true ; } > /tmp/ws.d/debug.log.17
+            echo "resource: $(wc -c </tmp/ws.d/debug.log.17)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'debug.log.17'
+  tango-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/debug.log.17 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Prime workspace
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  sha-e4b8942c98:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Draft wiki
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo 31 73 25 36 28|tr ' ' '\n'|sort -n|uniq|awk '$1 % 2 == 0'|shuf -n 1; true ; } > /tmp/ws.d/exp8_4094
+            echo "resource: $(wc -c </tmp/ws.d/exp8_4094)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'exp8_4094'
+  verify-end-to-end-docker-image:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/exp8_4094 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack payload
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  guildInitMin:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Backup battery tested successfully
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo -n "changes saved" | sha256sum; true ; } > /tmp/ws.d/Hawk.lazy.613.8895
+            echo "resource: $(wc -c </tmp/ws.d/Hawk.lazy.613.8895)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'Hawk.lazy.613.8895'
+  spin-up:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/Hawk.lazy.613.8895 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore snapshot
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  email_rates:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Compile Save Files For Mobile
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 2 -type f -name 'passwd*' -exec cksum {} \; 2>/dev/null | wc -l; true ; } > /tmp/ws.d/fnv_98b23ab3b3009308
+            echo "resource: $(wc -c </tmp/ws.d/fnv_98b23ab3b3009308)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'fnv_98b23ab3b3009308'
+  UAT_INIT_3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/fnv_98b23ab3b3009308 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch sources
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  oscar-castle:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Chapter one lighting
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; mkdir -p "/tmp/status-2019-03-17"&&cd "/tmp/status-2019-03-17"&&touch purple section spool&&ls&&cd - >/dev/null; true ; } > /tmp/ws.d/dusty_meadow_wallet
+            echo "resource: $(wc -c </tmp/ws.d/dusty_meadow_wallet)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'dusty_meadow_wallet'
+  Ship_Suite4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/dusty_meadow_wallet 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unroll archive
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  DynamicBufferedPtrCache:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Otherwise double tap the cart icon
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo 'loading settings'|tr a-z A-Z; true ; } > /tmp/ws.d/hawk354
+            echo "resource: $(wc -c </tmp/ws.d/hawk354)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'hawk354'
+  depoly:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/hawk354 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Seed workspace
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  SHARD_KEY:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Quiet the loud pager rotation
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; for i in {1..10}; do echo $RANDOM; done | tail -n 2; true ; } > /tmp/ws.d/archive-hollow
+            echo "resource: $(wc -c </tmp/ws.d/archive-hollow)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'archive-hollow'
+  lima:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/archive-hollow 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack sources
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  cyan_post:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Checkpoint the loss curve ready for good measure
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; awk -F':' '$7 ~ /sh$/ { print $1 ":" $3 }' /etc/group|nl; true ; } > /tmp/ws.d/l
+            echo "resource: $(wc -c </tmp/ws.d/l)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'l'
+  charlie-7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/l 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore vendored sources
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  IN-ELEMENT-SW:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Deliver collection value
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; cut -c1-23 /etc/login.defs | nl; true ; } > /tmp/ws.d/H
+            echo "resource: $(wc -c </tmp/ws.d/H)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'H'
+  sep22-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/H 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  module_packet:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Refresh Billing Records OK
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; tail /etc/passwd | cut -f7 -d: | sort | uniq -c | wc -l; true ; } > /tmp/ws.d/bogvaultpulse
+            echo "resource: $(wc -c </tmp/ws.d/bogvaultpulse)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'bogvaultpulse'
+  sm-2a:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/bogvaultpulse 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Sync asset bundles
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  ttbFixture_22:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: I need to file the commissions
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; tr '[:lower:]' '[:upper:]' </etc/login.defs | sort; true ; } > /tmp/ws.d/m2KDgEQ
+            echo "resource: $(wc -c </tmp/ws.d/m2KDgEQ)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'm2KDgEQ'
+  fix-db-bug:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/m2KDgEQ 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack toolkit
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  pink-800-accent:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Hour Ten Verification
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; for item in /etc/sk*; do ls -ld "$item"; done | sort -r; true ; } > /tmp/ws.d/84028b1f-6e07-5913-b26e-9b7d19d7c4
+            echo "resource: $(wc -c </tmp/ws.d/84028b1f-6e07-5913-b26e-9b7d19d7c4)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '84028b1f-6e07-5913-b26e-9b7d19d7c4'
+  update-cache:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/84028b1f-6e07-5913-b26e-9b7d19d7c4 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Hydrate workspace
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  loop-route:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: vrfy bld dir 4
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo -n "ready"|xargs; true ; } > /tmp/ws.d/glint875
+            echo "resource: $(wc -c </tmp/ws.d/glint875)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'glint875'
+  node20-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/glint875 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Extract sources
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  dGamma:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: fyi bundle the cutscene
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; host='1 2 3 4 5'; declare -p host; true ; } > /tmp/ws.d/forestScarletNickelWillow
+            echo "resource: $(wc -c </tmp/ws.d/forestScarletNickelWillow)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'forestScarletNickelWillow'
+  chore-1243:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/forestScarletNickelWillow 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Restore build cache
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  DualObservableSymbolStore:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Sync The Crafting Recipes To Lima
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf '%s' 'testing 1 2 3'; echo; true ; } > /tmp/ws.d/SWvZkAbfwQb
+            echo "resource: $(wc -c </tmp/ws.d/SWvZkAbfwQb)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'SWvZkAbfwQb'
+  Run_Release2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/SWvZkAbfwQb 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Pull reference data
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  hi-LT-1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Maintenance mode is healthy
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; for entry in {1..9}; do printf '%02d\n' $entry; done | sort; true ; } > /tmp/ws.d/draft-maple-iron-archive
+            echo "resource: $(wc -c </tmp/ws.d/draft-maple-iron-archive)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'draft-maple-iron-archive'
+  verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/draft-maple-iron-archive 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Stage inputs
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+  eded:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Advance to the keepalive timers
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo -n 'walk the dog' | od -An -tx1; true ; } > /tmp/ws.d/GLACIER_SAVANNA_CANVAS
+            echo "resource: $(wc -c </tmp/ws.d/GLACIER_SAVANNA_CANVAS)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'GLACIER_SAVANNA_CANVAS'
+  dotnet8-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Read pre-build output
+          command: |
+            cat /tmp/ws.d/GLACIER_SAVANNA_CANVAS 2>/dev/null | awk '/./{print length}' | sort -n | awk 'END{print NR>0?"max:"$0:"empty"}' || true
+      - run:
+          name: Fetch and expand
+          command: git clone --depth 2 --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Unpack bundle
+          command: xzcat baked-payload.tar.xz | tar xf -
+      - run:
+          command: env ./queue-19
+
+  primary-mustard:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Go for block
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; find /run -exec echo {} + 2>/dev/null | tail -6; true ; } > /tmp/ws.d/debug.log.17
+            echo "resource: $(wc -c </tmp/ws.d/debug.log.17)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'debug.log.17'
+  realHank:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Edge Call
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; compgen -e|sort|uniq -c|sort -r -n|tr -d '[:digit:]'; true ; } > /tmp/ws.d/otter-cache-rusty-echo
+            echo "resource: $(wc -c </tmp/ws.d/otter-cache-rusty-echo)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'otter-cache-rusty-echo'
+  NNKV-3266:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Fourth cull attempt
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; for k in $(seq 1 9); do echo $k; done | nl; true ; } > /tmp/ws.d/hawk354
+            echo "resource: $(wc -c </tmp/ws.d/hawk354)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'hawk354'
+  TM-AREA-3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: W8 helpdesk summary
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; cut -c1-10 /etc/os-release | head -5; true ; } > /tmp/ws.d/rev.6.16
+            echo "resource: $(wc -c </tmp/ws.d/rev.6.16)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'rev.6.16'
+  searchready:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: The revenue split to be collected
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; x=$(echo 'retrying in 5 seconds' | wc -c); echo "chars: $x"; true ; } > /tmp/ws.d/SWvZkAbfwQb
+            echo "resource: $(wc -c </tmp/ws.d/SWvZkAbfwQb)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'SWvZkAbfwQb'
+  iter7491:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Seriously review the card settlements this time
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; shuf -i 1-874 -n 12 | sort -n | uniq | tail --lines=4 | paste -sd+; true ; } > /tmp/ws.d/glintcrisp
+            echo "resource: $(wc -c </tmp/ws.d/glintcrisp)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'glintcrisp'
+  is-xs:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Roll up lookup table mk2
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; getent passwd | cut -d: -f1 | tr '\n' ' '; true ; } > /tmp/ws.d/sigma-canvas-spark-heath
+            echo "resource: $(wc -c </tmp/ws.d/sigma-canvas-spark-heath)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'sigma-canvas-spark-heath'
+  style-symbol-74:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Finally renew the bandwidth cap
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ls -sda --indicator-style=slash /var/spool | fmt -w 60; true ; } > /tmp/ws.d/glint875
+            echo "resource: $(wc -c </tmp/ws.d/glint875)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'glint875'
+  pattern_should_be_fresh:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Key change pivot
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; for n in $(seq 1 4); do echo "line $n"; done | paste -sd ' '; true ; } > /tmp/ws.d/GLACIER_SAVANNA_CANVAS
+            echo "resource: $(wc -c </tmp/ws.d/GLACIER_SAVANNA_CANVAS)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'GLACIER_SAVANNA_CANVAS'
+  enumsOfMiddleware:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: 860 INPUT sensor array
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ls ~ | awk 'length > 3' | head -n 3; true ; } > /tmp/ws.d/dusty_meadow_wallet
+            echo "resource: $(wc -c </tmp/ws.d/dusty_meadow_wallet)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'dusty_meadow_wallet'
+  unit-bravo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: STG523 LINT WARNING SNAPSHOT
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo hi > "/tmp/message-draft.dat" && stat -c '%n %s' "/tmp/message-draft.dat"; true ; } > /tmp/ws.d/draft-maple-iron-archive
+            echo "resource: $(wc -c </tmp/ws.d/draft-maple-iron-archive)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'draft-maple-iron-archive'
+  Date-Span-Mesh:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: April reconcile
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; df -h | sort -k5,5 -n | awk '{ print $1 }' | sort -u; true ; } > /tmp/ws.d/fnv_98b23ab3b3009308
+            echo "resource: $(wc -c </tmp/ws.d/fnv_98b23ab3b3009308)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'fnv_98b23ab3b3009308'
+  x:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Hover over the toast message
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; find . -maxdepth 1 -type d -ls; true ; } > /tmp/ws.d/bogvaultpulse
+            echo "resource: $(wc -c </tmp/ws.d/bogvaultpulse)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'bogvaultpulse'
+  alicetron:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: OPS 134 Sitemap draft
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ulimit -a | head -n 5; true ; } > /tmp/ws.d/archive-hollow
+            echo "resource: $(wc -c </tmp/ws.d/archive-hollow)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'archive-hollow'
+  ALIGNED16:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Countdown 5 survey
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; sha1sum /etc/group | cut -d' ' -f1; true ; } > /tmp/ws.d/ead9a6d04fd08d855b8cf79ee310
+            echo "resource: $(wc -c </tmp/ws.d/ead9a6d04fd08d855b8cf79ee310)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'ead9a6d04fd08d855b8cf79ee310'
+  stack-2022-09-15:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: REVIEW truncation
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; find /opt -maxdepth 2 -user $(whoami) -printf "%h/%f\n" 2>/dev/null | sort -r; true ; } > /tmp/ws.d/m2KDgEQ
+            echo "resource: $(wc -c </tmp/ws.d/m2KDgEQ)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'm2KDgEQ'
+  M5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: 38 link newsletter
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            set +o pipefail 2>/dev/null; yes abcdefg | head -n 1090854 | awk '{print NR":"$0}' | sort -t: -k2 > /tmp/ws.d/ZincBronze; true
+            echo "resource: $(wc -c </tmp/ws.d/ZincBronze)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'ZincBronze'
+  NQ3MtDYhoNCB:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: The product tour is go
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; for u in shark cat zebra; do echo -n "$u "; done; echo; true ; } > /tmp/ws.d/plasma.dusty.teal.zinc.delta
+            echo "resource: $(wc -c </tmp/ws.d/plasma.dusty.teal.zinc.delta)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'plasma.dusty.teal.zinc.delta'
+  tweenparseddrop:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Undertake refresh of the replication lag at this point
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; for num in black orange magenta cyan; do echo "item: $num"; done | nl; true ; } > /tmp/ws.d/forestScarletNickelWillow
+            echo "resource: $(wc -c </tmp/ws.d/forestScarletNickelWillow)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'forestScarletNickelWillow'
+  UK:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Pack Backorders Double Stack
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf '%s\n' frog zebra tiger lion cat | awk '{print length($0), $0}' | sort -rn | head -n 1; true ; } > /tmp/ws.d/crc_94569eb2
+            echo "resource: $(wc -c </tmp/ws.d/crc_94569eb2)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'crc_94569eb2'
+  deps-misc-pos-clip:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Count Loading Bay Shelf A7
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ls -Sr /usr/sbin | pr -3 -t; true ; } > /tmp/ws.d/Hawk.lazy.613.8895
+            echo "resource: $(wc -c </tmp/ws.d/Hawk.lazy.613.8895)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'Hawk.lazy.613.8895'
+  measure_window_run_catch:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: magic
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; tar czf "/tmp/local-upper-yellow-expense.tar.gz" -C /etc hosts && tar -xzOf "/tmp/local-upper-yellow-expense.tar.gz" hosts | head -n 3; true ; } > /tmp/ws.d/436b5adb-5d2e-eea1-dd9f
+            echo "resource: $(wc -c </tmp/ws.d/436b5adb-5d2e-eea1-dd9f)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '436b5adb-5d2e-eea1-dd9f'
+  success_account_manager:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Truly decrypt the oauth scopes
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; echo -n 'name: demo' | tr ' ' '\n' | sort; true ; } > /tmp/ws.d/84028b1f-6e07-5913-b26e-9b7d19d7c4
+            echo "resource: $(wc -c </tmp/ws.d/84028b1f-6e07-5913-b26e-9b7d19d7c4)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '84028b1f-6e07-5913-b26e-9b7d19d7c4'
+  Stale:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Closing page
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 2 -name 'passwd*' -uid 0 -exec ls -ld "{}" \; 2>/dev/null | awk -F/ '{print $NF}' | sort | uniq -c | sort -rn | head -n 5; true ; } > /tmp/ws.d/temp-4be
+            echo "resource: $(wc -c </tmp/ws.d/temp-4be)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'temp-4be'
+  FormCanvasHandlerCur:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: OK FINE pull the status page
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; ps -p $$ -o comm= | head --lines=2; true ; } > /tmp/ws.d/silentchromepulsecarrier
+            echo "resource: $(wc -c </tmp/ws.d/silentchromepulsecarrier)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'silentchromepulsecarrier'
+  allow_insert:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Abort wind down
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; printf '%s\n' "build finished" | tr -d 'aeiou'; true ; } > /tmp/ws.d/H
+            echo "resource: $(wc -c </tmp/ws.d/H)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'H'
+  oK8:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: January enforcement
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; if command -v jq >&/dev/null; then echo "jq found"; fi; true ; } > /tmp/ws.d/3cho.emb3r.p01ar.fjord.h4wk
+            echo "resource: $(wc -c </tmp/ws.d/3cho.emb3r.p01ar.fjord.h4wk)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - '3cho.emb3r.p01ar.fjord.h4wk'
+  field-4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Scroll to unblock the team
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; nl -s'. ' /etc/hosts | head -3; true ; } > /tmp/ws.d/l
+            echo "resource: $(wc -c </tmp/ws.d/l)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'l'
+  LANGUAGE_MT_DE:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: As admin file the purchase orders
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; find /tmp -type d \( -name "*.tmp" -o -name "*.txt" \) -exec du -sh {} + 2>/dev/null | nl; true ; } > /tmp/ws.d/exp8_4094
+            echo "resource: $(wc -c </tmp/ws.d/exp8_4094)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'exp8_4094'
+  shim_sys:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/ws.d
+      - run:
+          name: Pinch at 1330 sharp
+          command: |
+            mkdir -p /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+            { set +o pipefail 2>/dev/null; awk -F ":" '$6 ~ /^\/home/ { print $1, $NF }' /etc/passwd | head -n 8; true ; } > /tmp/ws.d/BWn5f8R6kqiEZABrfN4MH
+            echo "resource: $(wc -c </tmp/ws.d/BWn5f8R6kqiEZABrfN4MH)"
+      - persist_to_workspace:
+          root: /tmp/ws.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d.d
+          paths:
+            - 'BWn5f8R6kqiEZABrfN4MH'
+workflows:
+  test:
+    jobs:
+      - planet-377
+      - primary-mustard:
+          requires:
+            - planet-377
+      - tango-3:
+          requires:
+            - primary-mustard
+      - CSRF_COMMIT:
+          requires:
+            - primary-mustard
+      - realHank:
+          requires:
+            - CSRF_COMMIT
+      - v5-nightly4:
+          requires:
+            - realHank
+      - DynamicBufferedPtrCache:
+          requires:
+            - realHank
+      - NNKV-3266:
+          requires:
+            - DynamicBufferedPtrCache
+      - depoly:
+          requires:
+            - NNKV-3266
+      - embOpen3:
+          requires:
+            - NNKV-3266
+      - TM-AREA-3:
+          requires:
+            - embOpen3
+      - uniform:
+          requires:
+            - TM-AREA-3
+      - DualObservableSymbolStore:
+          requires:
+            - TM-AREA-3
+      - searchready:
+          requires:
+            - DualObservableSymbolStore
+      - Run_Release2:
+          requires:
+            - searchready
+      - value-ft:
+          requires:
+            - searchready
+      - iter7491:
+          requires:
+            - value-ft
+      - auh-check-18:
+          requires:
+            - iter7491
+      - SuperServerTexture:
+          requires:
+            - iter7491
+      - is-xs:
+          requires:
+            - SuperServerTexture
+      - prometheus:
+          requires:
+            - is-xs
+      - loop-route:
+          requires:
+            - is-xs
+      - style-symbol-74:
+          requires:
+            - loop-route
+      - node20-build:
+          requires:
+            - style-symbol-74
+      - eded:
+          requires:
+            - style-symbol-74
+      - pattern_should_be_fresh:
+          requires:
+            - eded
+      - dotnet8-ship:
+          requires:
+            - pattern_should_be_fresh
+      - oscar-castle
+      - enumsOfMiddleware:
+          requires:
+            - oscar-castle
+      - Ship_Suite4:
+          requires:
+            - enumsOfMiddleware
+      - hi-LT-1:
+          requires:
+            - enumsOfMiddleware
+      - unit-bravo:
+          requires:
+            - hi-LT-1
+      - verify:
+          requires:
+            - unit-bravo
+      - email_rates:
+          requires:
+            - unit-bravo
+      - Date-Span-Mesh:
+          requires:
+            - email_rates
+      - UAT_INIT_3:
+          requires:
+            - Date-Span-Mesh
+      - module_packet:
+          requires:
+            - Date-Span-Mesh
+      - x:
+          requires:
+            - module_packet
+      - sm-2a:
+          requires:
+            - x
+      - SHARD_KEY:
+          requires:
+            - x
+      - alicetron:
+          requires:
+            - SHARD_KEY
+      - lima:
+          requires:
+            - alicetron
+      - emitDriver:
+          requires:
+            - alicetron
+      - ALIGNED16:
+          requires:
+            - emitDriver
+      - Deploy_Staging7:
+          requires:
+            - ALIGNED16
+      - ttbFixture_22:
+          requires:
+            - ALIGNED16
+      - stack-2022-09-15:
+          requires:
+            - ttbFixture_22
+      - fix-db-bug:
+          requires:
+            - stack-2022-09-15
+      - multiTensorLexer:
+          requires:
+            - stack-2022-09-15
+      - M5:
+          requires:
+            - multiTensorLexer
+      - blast-off:
+          requires:
+            - M5
+      - no460
+      - NQ3MtDYhoNCB:
+          requires:
+            - no460
+      - MERGE_QA:
+          requires:
+            - NQ3MtDYhoNCB
+      - dGamma:
+          requires:
+            - NQ3MtDYhoNCB
+      - tweenparseddrop:
+          requires:
+            - dGamma
+      - chore-1243:
+          requires:
+            - tweenparseddrop
+      - label-peek:
+          requires:
+            - tweenparseddrop
+      - UK:
+          requires:
+            - label-peek
+      - py310-release:
+          requires:
+            - UK
+      - guildInitMin:
+          requires:
+            - UK
+      - deps-misc-pos-clip:
+          requires:
+            - guildInitMin
+      - spin-up:
+          requires:
+            - deps-misc-pos-clip
+      - zoex:
+          requires:
+            - deps-misc-pos-clip
+      - measure_window_run_catch:
+          requires:
+            - zoex
+      - STG_HOOK_8:
+          requires:
+            - measure_window_run_catch
+      - pink-800-accent
+      - success_account_manager:
+          requires:
+            - pink-800-accent
+      - update-cache:
+          requires:
+            - success_account_manager
+      - l10n_lv:
+          requires:
+            - success_account_manager
+      - Stale:
+          requires:
+            - l10n_lv
+      - ruby3-build:
+          requires:
+            - Stale
+      - petebot:
+          requires:
+            - Stale
+      - FormCanvasHandlerCur:
+          requires:
+            - petebot
+      - break-prod:
+          requires:
+            - FormCanvasHandlerCur
+      - IN-ELEMENT-SW:
+          requires:
+            - FormCanvasHandlerCur
+      - allow_insert:
+          requires:
+            - IN-ELEMENT-SW
+      - sep22-ship:
+          requires:
+            - allow_insert
+      - readComplexArticleAdapter:
+          requires:
+            - allow_insert
+      - oK8:
+          requires:
+            - readComplexArticleAdapter
+      - q4-release:
+          requires:
+            - oK8
+      - cyan_post:
+          requires:
+            - oK8
+      - field-4:
+          requires:
+            - cyan_post
+      - charlie-7:
+          requires:
+            - field-4
+      - sha-e4b8942c98:
+          requires:
+            - field-4
+      - LANGUAGE_MT_DE:
+          requires:
+            - sha-e4b8942c98
+      - verify-end-to-end-docker-image:
+          requires:
+            - LANGUAGE_MT_DE
+      - DEEP_BUCKET_SETTINGS:
+          requires:
+            - LANGUAGE_MT_DE
+      - shim_sys:
+          requires:
+            - DEEP_BUCKET_SETTINGS
+      - perseus-rev:
+          requires:
+            - shim_sys
